@@ -1,0 +1,2 @@
+- Leaving the app with no router in favour of a divided screen for simplicity.
+- Would be wise adding a git commit hook to prevent devs from commiting 'not passign test' code

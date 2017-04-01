@@ -1,8 +1,15 @@
 import React from 'react';
+import './Header.css';
 
 const Header = ({loading}) => {
   return (
-    <h1>Product basket</h1>
+    <div>
+      <header className="mdl-layout__header">
+        <div className="mdl-layout__header-row">
+          <span className="mdl-layout-title">Title</span>
+        </div>
+      </header>
+    </div>
   )
 }
 

@@ -1,22 +1,14 @@
 let nextTodoId = 0
-export const addTodo = (text) => {
+export const addToBasket = (id) => {
   return {
-    type: 'ADD_TODO',
-    id: nextTodoId++,
-    text
+    type: 'ADD_PRODUCT',
+    id
   }
 }
 
-export const setVisibilityFilter = (filter) => {
+export const removeFromBasket = (id) => {
   return {
-    type: 'SET_VISIBILITY_FILTER',
-    filter
-  }
-}
-
-export const toggleTodo = (id) => {
-  return {
-    type: 'TOGGLE_TODO',
+    type: 'REMOVE_PRODUCT',
     id
   }
 }
