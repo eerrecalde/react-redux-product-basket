@@ -11,11 +11,44 @@ class BasketListContainer extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <BasketList test="123" />
-      </div>
-    );
+    const {basket} = this.props
+    if(basket.length) {
+      return (
+        <div>
+          <h5>Basket</h5>
+          <BasketList basket={basket} />
+          <p>Total products: {
+            basket.reduce(function(acc, val) {
+              return acc + val.quantity;
+            }, 0)
+          }</p>
+          <p>Sub total: {
+            basket.reduce(function(acc, val) {
+              return acc + (val.quantity * val.price.value);
+            }, 0)
+          }</p>
+          <p>Total Discounts: {
+            basket.reduce(function(acc, val) {
+              return acc + (val.quantity * val.price.value);
+            }, 0) - basket.reduce(function(acc, val) {
+              return acc + val.discounted_price;
+            }, 0)
+          }</p>
+          <p>Total: {
+            basket.reduce(function(acc, val) {
+              return acc + val.discounted_price;
+            }, 0)
+          }</p>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <h5>Basket</h5>
+          <p>You have 0 products in the basket</p>
+        </div>
+      )
+    }
   }
 }
 

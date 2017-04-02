@@ -1,7 +1,6 @@
 import React, {PropTypes} from 'react'
-import './ProductItem.css'
 
-const ProductList = ({item, onAddItem, qty, saving, onChange}) => (
+const BasketList = ({item, onAddItem, onRemoveItem, saving, onChange}) => (
   <li className="prod mdl-list__item mdl-list__item--custom mdl-list__item--two-line">
     <span className="mdl-list__item-primary-content">
       <i className="material-icons mdl-list__item-avatar mdl-list__item-avatar--custom">wallpaper</i>
@@ -12,8 +11,11 @@ const ProductList = ({item, onAddItem, qty, saving, onChange}) => (
     </span>
     <span className="mdl-list__item-secondary-content mdl-list__item-secondary-content--custom">
       <div className="clearfix">
-        <input className="prod__quantity" type="number" name="" value={qty} onChange={onChange} id=""/>
-        <button disabled={saving} onClick={() => onAddItem(item, qty)} className="prod__button mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+        <button disabled={saving} onClick={() => onRemoveItem(item, item.quantity)} className="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+          <i className="material-icons">remove</i>
+        </button>
+        <input className="prod__quantity" type="number" name="" readOnly value={item.quantity} onChange={onChange} id=""/>
+        <button disabled={saving} onClick={() => onAddItem(item, item.quantity)} className="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
           <i className="material-icons">add</i>
         </button>
       </div>
@@ -21,8 +23,8 @@ const ProductList = ({item, onAddItem, qty, saving, onChange}) => (
   </li>
 )
 
-ProductList.propTypes = {
+BasketList.propTypes = {
   item: PropTypes.object.isRequired
 }
 
-export default ProductList
+export default BasketList

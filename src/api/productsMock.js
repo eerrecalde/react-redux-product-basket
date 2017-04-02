@@ -8,10 +8,7 @@ export default [
       "currencyChar": "£",
       "value": 12
     },
-    "discount": {
-      "type": "percentage",
-      "percentage": 5
-    }
+    "discount": "3x2"
   },
   {
     "id": "02",
@@ -22,10 +19,27 @@ export default [
       "currencyChar": "£",
       "value": 15
     },
-    "discount": {
-      "type": "fixed",
-      "min_quantity": 2,
-      "fixed_discount": 3
+    "discount": "5%off"
+  },
+  {
+    "id": "03",
+    "name": "Product 3",
+    "description": "Lorem ipsum dolor amet.",
+    "price": {
+      "currency": "GBP",
+      "currencyChar": "£",
+      "value": 20
     }
+  },
+  {
+    "id": "04",
+    "name": "Product 4",
+    "description": "Lorem ipsum dolor amet.",
+    "price": {
+      "currency": "GBP",
+      "currencyChar": "£",
+      "value": 50
+    },
+    "discount": "10off>3"
   }
 ]

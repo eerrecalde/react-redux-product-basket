@@ -1,28 +1,47 @@
 import productsApi from '../api/productsApi';
 import basketApi from '../api/basketApi';
 
-export const addToBasketSuccess = (basket) => {
+export const addToBasketSuccess = (item) => {
   return {
     type: 'ADD_TO_BASKET_SUCCESS',
-    basket
+    item
   }
 }
 
-export const addToBasket = (item) => {
-  console.log('Adding item', item)
+export const updateBasketSuccess = (item) => {
+  return {
+    type: 'UPDATE_BASKET_SUCCESS',
+    item
+  }
+}
+
+export const removeFromBasketSuccess = (id) => {
+  return {
+    type: 'REMOVE_FROM_BASKET_SUCCESS',
+    id
+  }
+}
+
+export const addToBasket = (item, quantityToAdd) => {
   return (dispatch) => {
-    return basketApi.addToBasket(item).then((basket) => {
-      dispatch(addToBasketSuccess(basket))
+    return basketApi.addToBasket(item, quantityToAdd).then(({item, method}) => {
+      console.log('ADDED ITEM', item, method)
+      if(method === 'add') dispatch(addToBasketSuccess(item))
+      if(method === 'update') dispatch(updateBasketSuccess(item))
     }).catch((error) => {
       throw (error)
     })
   }
 }
 
-export const removeFromBasket = (id) => {
-  return {
-    type: 'REMOVE_PRODUCT',
-    id
+export const updateBasket = (item, newQuantity) => {
+  return (dispatch) => {
+    return basketApi.updateBasket(item, newQuantity).then(({item, newQuantity}) => {
+      if(newQuantity > 0) dispatch(updateBasketSuccess(item))
+      if(newQuantity === 0) dispatch(removeFromBasketSuccess(item.id))
+    }).catch((error) => {
+      throw (error)
+    })
   }
 }
 

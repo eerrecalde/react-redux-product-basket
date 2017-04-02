@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import * as productActions from '../../actions'
-import ProductItem from './ProductItem'
+import * as productActions from '../actions'
+import ProductItem from '../components/product/ProductItem'
 
 class ProductContainer extends Component {
 
@@ -25,9 +25,10 @@ class ProductContainer extends Component {
     this.setState({quantity: event.target.value});
   }
 
-  addItem(item, quantityToAdd) {
+  addItem(id, qty) {
+    console.log('OH SAVE', id, qty);
     this.setState({saving: true})
-    this.props.actions.addToBasket(item, quantityToAdd)
+    this.props.actions.addToBasket(id)
       .then(() => {
         this.setState({saving: false})
       })
@@ -37,7 +38,7 @@ class ProductContainer extends Component {
     const {item} = this.props
     return (
       <div>
-        <ProductItem item={item} onAddItem={this.addItem} qty={this.state.quantity} saving={this.state.saving} disabled={this.state.saving} onChange={this.handleChange}/>
+        <ProductItem item={item} onAddItem={this.addItem} qty={this.state.quantity} disabled={this.state.saving} onChange={this.handleChange}/>
       </div>
     );
   }

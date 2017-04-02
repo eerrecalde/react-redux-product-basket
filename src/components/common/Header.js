@@ -6,7 +6,7 @@ const Header = ({loading}) => {
     <div>
       <header className="mdl-layout__header">
         <div className="mdl-layout__header-row">
-          <span className="mdl-layout-title">Title</span>
+          <span className="mdl-layout-title">Basket App</span>
         </div>
       </header>
     </div>

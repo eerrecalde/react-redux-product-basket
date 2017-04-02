@@ -1,10 +1,15 @@
-import delay from './delay';
-import mockProducts from './productsMock';
+import delay from './delay'
+import mockProducts from './productsMock'
+import mockDiscounts from './discountsMock'
+import {addDiscountsToProducts} from '../selectors/selectors'
 
 //  This file mocks a web API by working with the hard-coded data below.
 //  It uses setTimeout to simulate the delay of an AJAX call.
 //  All calls return promises.
-const products = mockProducts;
+const discounts = mockDiscounts
+
+// I'm assuming I receive products and discounts from different APIs
+const products = addDiscountsToProducts(mockProducts, discounts)
 
 class ProductApi {
   static getAllProducts () {
@@ -15,14 +20,14 @@ class ProductApi {
       }, delay)
 
       // Real API call scenario using axios
-      // const url = 'apiUrl';
+      // const url = 'apiUrl'
       // axios.get(url)
       // .then((response) => {
-      //   resolve(Object.assign([], products));
+      //   resolve(Object.assign([], products))
       // })
       // .catch(function (error) {
-      //   reject(error);
-      // });
+      //   reject(error)
+      // })
 
     })
   }
