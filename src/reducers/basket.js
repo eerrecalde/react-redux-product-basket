@@ -1,14 +1,11 @@
 import initialState from './initialState'
 
-const basket = (state = initialState.cart, action) => {
+const basket = (state = initialState.basket, action) => {
   switch (action.type) {
-    case 'ADD_PRODUCT':
-      return [
-        ...state,
-        action.id
-      ];
+    case 'ADD_TO_BASKET_SUCCESS':
+      return Object.assign([], action.basket)
     case 'REMOVE_PRODUCT':
-      return [...state.filter((id) => id !== action.id)];
+      return [...state.filter((id) => id !== action.id)]
     default:
       return state
   }

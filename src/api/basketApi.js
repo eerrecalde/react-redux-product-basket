@@ -1,17 +1,28 @@
 import delay from './delay';
-import mockProducts from './productsMock';
 
 //  This file mocks a web API by working with the hard-coded data below.
 //  It uses setTimeout to simulate the delay of an AJAX call.
 //  All calls return promises.
-const products = mockProducts;
+const basket = [];
 
-class ProductApi {
-  static getAllProducts () {
+class BasketApi {
+  static addToBasket (item) {
+    item = Object.assign({}, item)
     return new Promise((resolve, reject) => {
       // Replace this code with the real API call
       setTimeout(() => {
-        resolve(Object.assign([], products))
+        const existingItem = basket.find(a => a.id === item.id)
+        item.quantity = parseInt(item.quantity)
+        if (existingItem) {
+          item.quantity += existingItem.quantity
+          basket.splice(existingItem, 1, item)
+        } else {
+          basket.push(item)
+        }
+
+        console.log('ITEM ADDED', item)
+
+        resolve(basket)
       }, delay)
 
       // Real API call scenario using axios
@@ -28,4 +39,4 @@ class ProductApi {
   }
 }
 
-export default ProductApi
+export default BasketApi

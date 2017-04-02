@@ -3,7 +3,7 @@ import * as actions from '../actions'
 
 test('should add a product when call ADD_PRODUCT', () => {
   const initialState = {
-    cart: []
+    basket: []
   }
 
   const newProduct = "01";
@@ -11,14 +11,14 @@ test('should add a product when call ADD_PRODUCT', () => {
   const action = actions.addToBasket(newProduct)
 
   // act
-  const newState = basketReducer(initialState.cart, action)
+  const newState = basketReducer(initialState.basket, action)
 
   expect(!!newState.length).toBeTruthy();
 })
 
 test('should remove a product when call REMOVE_PRODUCT', () => {
   const initialState = {
-    cart: ["01", "02"]
+    basket: ["01", "02"]
   };
 
   const prodToRemove = "01";
@@ -26,7 +26,7 @@ test('should remove a product when call REMOVE_PRODUCT', () => {
   const action = actions.removeFromBasket(prodToRemove)
 
   // act
-  const newState = basketReducer(initialState.cart, action)
+  const newState = basketReducer(initialState.basket, action)
 
-  expect(newState.length).toBe(initialState.cart.length - 1);
+  expect(newState.length).toBe(initialState.basket.length - 1);
 })

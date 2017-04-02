@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ProductBasket = (props) => (
+const BasketList = (props) => (
   <div>
     Product basket {props.test}
   </div>
 )
 
-export default ProductBasket
+export default BasketList

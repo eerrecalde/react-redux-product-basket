@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from './components/common/Header'
-import ProductBasketContainer from './containers/ProductBasketContainer'
-import ProductListContainer from './containers/ProductListContainer'
+import BasketListContainer from './components/basketList/BasketListContainer'
+import ProductListContainer from './components/productList/ProductListContainer'
 import './assets/material/material.min.js'
 import './assets/material/material.min.css'
 
@@ -13,7 +13,7 @@ const App = () => (
     <Header />
     <div className="mdl-grid">
       <div className="mdl-cell mdl-cell--6-col"><ProductListContainer /></div>
-      <div className="mdl-cell mdl-cell--6-col"><ProductBasketContainer /></div>
+      <div className="mdl-cell mdl-cell--6-col"><BasketListContainer /></div>
     </div>
   </div>
 )
