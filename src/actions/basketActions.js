@@ -1,4 +1,3 @@
-import productsApi from '../api/productsApi';
 import basketApi from '../api/basketApi';
 
 export const addToBasketSuccess = (item) => {
@@ -39,24 +38,6 @@ export const updateBasket = (item, newQuantity) => {
     return basketApi.updateBasket(item, newQuantity).then(({item, newQuantity}) => {
       if(newQuantity > 0) dispatch(updateBasketSuccess(item))
       if(newQuantity === 0) dispatch(removeFromBasketSuccess(item.id))
-    }).catch((error) => {
-      throw (error)
-    })
-  }
-}
-
-export const loadProductsSuccess = (products) => {
-  return {
-    type: 'LOAD_PRODUCTS_SUCCESS',
-    products
-  }
-}
-
-export const loadProducts = () => {
-  return (dispatch) => {
-    return productsApi.getAllProducts().then((products) => {
-      console.log('SUCCESS', products)
-      dispatch(loadProductsSuccess(products))
     }).catch((error) => {
       throw (error)
     })

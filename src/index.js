@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import createStore from './store'
 import initialState from './reducers/initialState'
-import {loadProducts} from './actions'
+import {loadProducts} from './actions/productActions'
 import App from './App'
 
 const store = createStore(initialState)

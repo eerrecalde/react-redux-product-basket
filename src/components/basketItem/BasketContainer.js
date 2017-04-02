@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import * as basketActions from '../../actions'
+import * as basketActions from '../../actions/basketActions'
 import BasketItem from './BasketItem'
 
 class BasketContainer extends Component {

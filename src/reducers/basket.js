@@ -1,6 +1,6 @@
 import initialState from './initialState'
 
-const basket = (state = initialState.basket.products, action) => {
+const basket = (state = initialState.basket, action) => {
   switch (action.type) {
     case 'ADD_TO_BASKET_SUCCESS':
       return [

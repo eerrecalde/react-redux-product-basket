@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import * as productActions from '../../actions'
+import * as basketActions from '../../actions/basketActions'
 import ProductList from './ProductList'
 
 class ProductListContainer extends Component {
@@ -37,7 +37,7 @@ function mapStateToProps (state, ownProps) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    actions: bindActionCreators(productActions, dispatch)
+    actions: bindActionCreators(basketActions, dispatch)
   }
 }
 

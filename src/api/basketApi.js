@@ -70,6 +70,7 @@ class BasketApi {
           }
 
           basket.products = addDiscountedPriceToProducts(basket.products)
+
           resolve({item: itemToUpdate, newQuantity})
         } else {
           reject('Item to update not found');

@@ -1,2 +1,3 @@
 - Leaving the app with no router in favour of a divided screen for simplicity.
 - Would be wise adding a git commit hook to prevent devs from commiting 'not passign test' code
+- In a real case, it would be good to add reselect for expensive calculations

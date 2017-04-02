@@ -3,7 +3,6 @@ import rootReducer from '../reducers'
 import thunk from 'redux-thunk'
 
 export default function configureStore (initialState) {
-  console.log('rootReducer', rootReducer)
   return createStore(
     rootReducer,
     initialState,
