@@ -22,7 +22,7 @@ class BasketApi {
         const existingItemIndex = basket.products.findIndex(a => a.id === itemToAdd.id)
         const existingItem = basket.products[existingItemIndex]
 
-        quantityToAdd = parseInt(quantityToAdd)
+        quantityToAdd = parseInt(quantityToAdd, 10)
 
         if (existingItem) {
           itemToAdd.quantity = existingItem.quantity || 0
@@ -59,7 +59,7 @@ class BasketApi {
         let itemToUpdate = Object.assign({}, item)
         const existingItemIndex = basket.products.findIndex(a => a.id === itemToUpdate.id)
         const existingItem = basket.products[existingItemIndex]
-        newQuantity = parseInt(newQuantity)
+        newQuantity = parseInt(newQuantity, 10)
 
         if (existingItem) {
           if(newQuantity > 0) {

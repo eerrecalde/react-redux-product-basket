@@ -9,10 +9,10 @@ const basket = (state = initialState.basket, action) => {
       ]
 
     case 'UPDATE_BASKET_SUCCESS':
-      return [
-        ...state.filter((item) => item.id !== action.item.id),
-        Object.assign({}, action.item)
-      ]
+      const existingItemIndex = state.findIndex(a => a.id === action.item.id)
+      let newArr = Object.assign([], state);
+      newArr.splice(existingItemIndex, 1, action.item)
+      return newArr;
 
     case 'REMOVE_FROM_BASKET_SUCCESS':
       return [...state.filter((item) => item.id !== action.id)]

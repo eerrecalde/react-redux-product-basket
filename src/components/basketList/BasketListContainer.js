@@ -1,15 +1,10 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 import * as basketActions from '../../actions/basketActions'
-import BasketList from './BasketList';
+import BasketList from './BasketList'
 
 class BasketListContainer extends Component {
-
-  constructor(props){
-    super(props);
-  }
-
   render() {
     const {basket} = this.props
     if(basket.length) {
@@ -19,24 +14,24 @@ class BasketListContainer extends Component {
           <BasketList basket={basket} />
           <p>Total products: {
             basket.reduce(function(acc, val) {
-              return acc + val.quantity;
+              return acc + val.quantity
             }, 0)
           }</p>
           <p>Sub total: {
             basket.reduce(function(acc, val) {
-              return acc + (val.quantity * val.price.value);
+              return acc + (val.quantity * val.price.value)
             }, 0)
           }</p>
           <p>Total Discounts: {
             basket.reduce(function(acc, val) {
-              return acc + (val.quantity * val.price.value);
+              return acc + (val.quantity * val.price.value)
             }, 0) - basket.reduce(function(acc, val) {
-              return acc + val.discounted_price;
+              return acc + val.discounted_price
             }, 0)
           }</p>
           <p>Total: {
             basket.reduce(function(acc, val) {
-              return acc + val.discounted_price;
+              return acc + val.discounted_price
             }, 0)
           }</p>
         </div>
@@ -64,4 +59,4 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-export default connect (mapStateToProps, mapDispatchToProps)(BasketListContainer);
+export default connect (mapStateToProps, mapDispatchToProps)(BasketListContainer)

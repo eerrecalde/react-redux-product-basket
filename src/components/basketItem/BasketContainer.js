@@ -7,15 +7,15 @@ import BasketItem from './BasketItem'
 class BasketContainer extends Component {
 
   constructor(props){
-    super(props);
-    this.state = {quantity: 1};
+    super(props)
+    this.state = {quantity: 1, saving: false}
     this.addOneItem = this.addOneItem.bind(this)
     this.removeOneItem = this.removeOneItem.bind(this)
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange(event) {
-    this.setState({quantity: event.target.value});
+    this.setState({quantity: event.target.value})
   }
 
   addOneItem(item, quantity) {
@@ -27,10 +27,11 @@ class BasketContainer extends Component {
   }
 
   removeOneItem(item, quantity) {
+    const newQuantity = quantity - 1;
     this.setState({saving: true})
-    this.props.actions.updateBasket(item, quantity - 1)
+    this.props.actions.updateBasket(item, newQuantity)
       .then(() => {
-        this.setState({saving: false})
+        if(newQuantity) this.setState({saving: false})
       })
   }
 
@@ -40,7 +41,7 @@ class BasketContainer extends Component {
       <div>
         <BasketItem item={item} onAddItem={this.addOneItem} onRemoveItem={this.removeOneItem} saving={this.state.saving} onChange={this.handleChange}/>
       </div>
-    );
+    )
   }
 }
 
@@ -56,4 +57,4 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-export default connect (mapStateToProps, mapDispatchToProps)(BasketContainer);
+export default connect (mapStateToProps, mapDispatchToProps)(BasketContainer)

@@ -1,11 +1,9 @@
 import basketReducer from './basket'
-import * as actions from '../actions'
+import * as actions from '../actions/basketActions'
 
 test('should add a product when call ADD_TO_BASKET_SUCCESS', () => {
   const initialState = {
-    basket: {
-      products: []
-    }
+    basket: []
   }
 
   const newProduct = {"id": "01"};
@@ -14,18 +12,16 @@ test('should add a product when call ADD_TO_BASKET_SUCCESS', () => {
   const action = actions.addToBasketSuccess(newProduct)
 
   // act
-  const newState = basketReducer(initialState.basket.products, action)
+  const newState = basketReducer(initialState.basket, action)
 
   expect(!!newState.length).toBeTruthy();
 })
 
 test('should remove a product when call REMOVE_FROM_BASKET_SUCCESS', () => {
   const initialState = {
-    basket: {
-      products: [
-        {id: "01"}, {id: "02"}
-      ]
-    }
+    basket: [
+      {id: "01"}, {id: "02"}
+    ]
   };
 
   const prodToRemove = "02";
@@ -33,18 +29,16 @@ test('should remove a product when call REMOVE_FROM_BASKET_SUCCESS', () => {
   const action = actions.removeFromBasketSuccess(prodToRemove)
 
   // act
-  const newState = basketReducer(initialState.basket.products, action)
+  const newState = basketReducer(initialState.basket, action)
 
-  expect(newState.length).toBe(initialState.basket.products.length - 1);
+  expect(newState.length).toBe(initialState.basket.length - 1);
 })
 
 test('should update a product when call UPDATE_BASKET_SUCCESS', () => {
   const initialState = {
-    basket: {
-      products: [
-        {id: "01", name: "test1"}, {id: "02", name: "test2"}
-      ]
-    }
+    basket: [
+      {id: "01", name: "test1"}, {id: "02", name: "test2"}
+    ]
   };
 
   const prodToUpdate = {id: "02", name: "test3"};
@@ -52,7 +46,7 @@ test('should update a product when call UPDATE_BASKET_SUCCESS', () => {
   const action = actions.updateBasketSuccess(prodToUpdate)
 
   // act
-  const newState = basketReducer(initialState.basket.products, action)
+  const newState = basketReducer(initialState.basket, action)
 
   const updatedCourse = newState.find(a => a.id === prodToUpdate.id)
   const untouchedCourse = newState.find(a => a.id === '01')

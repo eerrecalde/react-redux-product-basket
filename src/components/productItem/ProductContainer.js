@@ -7,10 +7,10 @@ import ProductItem from './ProductItem'
 class ProductContainer extends Component {
 
   constructor(props){
-    super(props);
-    this.state = {quantity: 1};
+    super(props)
+    this.state = {quantity: 1}
     this.addItem = this.addItem.bind(this)
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentWillReceiveProps (nextProps) {
@@ -21,7 +21,7 @@ class ProductContainer extends Component {
   }
 
   handleChange(event) {
-    this.setState({quantity: event.target.value});
+    this.setState({quantity: event.target.value})
   }
 
   addItem(item, quantityToAdd) {
@@ -38,7 +38,7 @@ class ProductContainer extends Component {
       <div>
         <ProductItem item={item} onAddItem={this.addItem} qty={this.state.quantity} saving={this.state.saving} disabled={this.state.saving} onChange={this.handleChange}/>
       </div>
-    );
+    )
   }
 }
 
@@ -54,4 +54,4 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-export default connect (mapStateToProps, mapDispatchToProps)(ProductContainer);
+export default connect (mapStateToProps, mapDispatchToProps)(ProductContainer)

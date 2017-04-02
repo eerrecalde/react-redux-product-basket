@@ -3,9 +3,9 @@ export default [
     "id": "3x2",
     "description": "2 for the price of 1",
     "formula": (quantity, price) => {
-      const rightToDiscount = parseInt(quantity / 3) * 3;
+      const rightToDiscount = parseInt(quantity / 3, 10) * 3;
       const withNoDiscount = quantity - rightToDiscount
-      return (parseInt(quantity / 3) * 2 * price) + withNoDiscount * price
+      return (parseInt(quantity / 3, 10) * 2 * price) + withNoDiscount * price
     }
   },
   {

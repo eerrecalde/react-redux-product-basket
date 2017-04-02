@@ -24,7 +24,6 @@ export const removeFromBasketSuccess = (id) => {
 export const addToBasket = (item, quantityToAdd) => {
   return (dispatch) => {
     return basketApi.addToBasket(item, quantityToAdd).then(({item, method}) => {
-      console.log('ADDED ITEM', item, method)
       if(method === 'add') dispatch(addToBasketSuccess(item))
       if(method === 'update') dispatch(updateBasketSuccess(item))
     }).catch((error) => {

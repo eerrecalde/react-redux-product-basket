@@ -5,27 +5,14 @@ import * as basketActions from '../../actions/basketActions'
 import ProductList from './ProductList'
 
 class ProductListContainer extends Component {
-
-  constructor(props){
-    super(props);
-  }
-
-  componentWillReceiveProps (nextProps) {
-    if (this.props.products.length) {
-      // Neccessary to populate form when existing course is loaded directly.
-      this.setState({products: Object.assign([], nextProps.products)})
-    }
-  }
-
   render() {
     const {products} = this.props
-    console.log('PRODS', products)
     return (
       <div>
         <h5>Product List</h5>
         <ProductList products={products} />
       </div>
-    );
+    )
   }
 }
 
@@ -41,4 +28,4 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-export default connect (mapStateToProps, mapDispatchToProps)(ProductListContainer);
+export default connect (mapStateToProps, mapDispatchToProps)(ProductListContainer)
