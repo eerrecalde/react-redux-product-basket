@@ -1,6 +1,6 @@
 import React from 'react'
 import {shallow} from 'enzyme'
-import ProductItem from './ProductItem'
+import BasketItem from './BasketItem'
 
 function setup (saving) {
   let props = {
@@ -18,27 +18,24 @@ function setup (saving) {
         description: '2 for the price of 1'
       }
     },
-    saving: saving,
-    qty: 1,
-    disabled: false,
     onAddItem: () => {},
+    onRemoveItem: () => {},
+    saving: saving,
     onChange: () => {}
   }
 
-  return shallow(<ProductItem {...props} />)
+  return shallow(<BasketItem {...props} />)
 }
 
-it('ProductItem renders and have a value assigned to the input', () => {
-  const wrapper = setup(false)
-
-  // console.log('wrapper', wrapper) 
+it('BasketItem renders and have a value assigned to the input', () => {
+  const wrapper = setup(true)
 
   expect(wrapper.find('.prod').length).toEqual(1)
 
   expect(wrapper.find('.prod__quantity').prop('value')).toBe(1)
 })
 
-it('ProductItem reneders its price', () => {
+it('BasketItem reneders its price', () => {
   const wrapper = setup(false)
 
   expect(wrapper.find('.prod__price').text()).toBe("£12")

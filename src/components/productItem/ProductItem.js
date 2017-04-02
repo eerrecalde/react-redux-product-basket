@@ -1,12 +1,12 @@
 import React, {PropTypes} from 'react'
 import './ProductItem.css'
 
-const ProductList = ({item, onAddItem, qty, saving, onChange}) => (
+const ProductItem = ({item, onAddItem, qty, saving, onChange}) => (
   <li className="prod mdl-list__item mdl-list__item--custom mdl-list__item--two-line">
     <span className="mdl-list__item-primary-content">
       <i className="material-icons mdl-list__item-avatar mdl-list__item-avatar--custom">wallpaper</i>
       <span>{item.name} <span dangerouslySetInnerHTML={{__html: (item.discount) ? '<small title=" ' + item.discount.description + ' ">(' + item.discount.id + ')</small> ' : ' '}}></span>
-        {item.price.currencyChar}{item.price.value}
+        <span className="prod__price">{item.price.currencyChar}{item.price.value}</span>
       </span>
       <span className="mdl-list__item-sub-title">{item.description}</span>
     </span>
@@ -21,8 +21,8 @@ const ProductList = ({item, onAddItem, qty, saving, onChange}) => (
   </li>
 )
 
-ProductList.propTypes = {
+ProductItem.propTypes = {
   item: PropTypes.object.isRequired
 }
 
-export default ProductList
+export default ProductItem

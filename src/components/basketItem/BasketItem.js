@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react'
 
-const BasketList = ({item, onAddItem, onRemoveItem, saving, onChange}) => (
+const BasketItem = ({item, onAddItem, onRemoveItem, saving, onChange}) => (
   <li className="prod mdl-list__item mdl-list__item--custom mdl-list__item--two-line">
     <span className="mdl-list__item-primary-content">
       <i className="material-icons mdl-list__item-avatar mdl-list__item-avatar--custom">wallpaper</i>
@@ -23,8 +23,8 @@ const BasketList = ({item, onAddItem, onRemoveItem, saving, onChange}) => (
   </li>
 )
 
-BasketList.propTypes = {
+BasketItem.propTypes = {
   item: PropTypes.object.isRequired
 }
 
-export default BasketList
+export default BasketItem
